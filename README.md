@@ -21,7 +21,7 @@ Last Edited: 3/29/20
 
 ## Overview on how it works
 ```javascript
---------------------------------------
+// --------------------------------------
 // File: App.js
 import React from 'react';
 import './App.css';
@@ -124,6 +124,8 @@ ReactDOM.render(
 </html>
 ```
 ## What I will be building to test my knowledge
-    - This application will show questions about React with input or multiploice answers.
-    - It will give you a score after each test given and wont let you pass to the next level.
+    - This application will allow users to create quick quizes.
+    - There will be a choice between open-ended or multiple choice as an answer to a question.
+    - The user will be able to time and see their results after the quiz.
+    - Users will also be given the choice to share their quiz to the public or keep it private.
 
