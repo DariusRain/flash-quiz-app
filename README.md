@@ -4,7 +4,7 @@
 Darius Rain
 React Course & Project.
 Started: 3/29/20
-Last Edited: 3/29/20
+Last Edited: 4/7/20
 </p>
 
 ## About React
@@ -123,6 +123,7 @@ ReactDOM.render(
   </body>
 </html>
 ```
+
 ## What I will be building to test my knowledge
     - This application will allow users to create quick quizes.
     - There will be a choice between open-ended or multiple choice as an answer to a question.

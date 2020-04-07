@@ -5,7 +5,6 @@ class SectionMiddle extends React.Component {
     render() {
         return (
           <div className="SectionMiddle">
-         
             <QAForm />
           </div>
         );
