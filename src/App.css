@@ -11,7 +11,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
 }
-
 .Header {
 
   /* background-color: whitesmoke; */
@@ -69,7 +68,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;
-  /* overflow: auto; */
+  overflow: auto;
   background-color: white;
 }
 .QuestionNumber { 
@@ -163,12 +162,12 @@ body {
   flex-direction: row;
   
   height: 100vh;
-  /* overflow: auto; */
+  overflow: auto;
   
   flex-wrap: wrap;
 }
 .SectionTop {
-  /* width: 100vw; */
+  width: 100vw;
   height: 30vh;
   display: flex;
   flex-direction: column;
@@ -179,9 +178,11 @@ body {
   display: flex;
   flex-direction: column;
     height: 100vh;
-  /* overflow: auto; */
+  overflow: auto;
+  background-color: whitesmoke;
 }
 .SectionBottom {
+  width: 100vw;
   display: flex;
   flex-direction: row;
   background-color: #333339;
@@ -193,6 +194,6 @@ body {
   top: -1;
   color: white;
   text-align: center;
-  margin-top: 100vh;
+  padding: 40px;
   height: 10vh;
 }
