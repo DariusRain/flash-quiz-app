@@ -7,8 +7,7 @@ class SectionTop extends React.Component {
   render() {
     return (
       <div className="SectionTop">
-        <Jumbo jumboText="Quiz Yourself!" />
-    
+        {this.props.children}
      </div>
     );
   }

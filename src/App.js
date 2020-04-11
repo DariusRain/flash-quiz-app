@@ -1,46 +1,34 @@
-import React, { Component } from 'react'
-import './App.css';
-import Header from './components/main/Header'
-import MainContent from './components/main/MainContent'
-import Footer from './components/main/Footer'
-// Redux
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+// Node Modules
+import React, { Component } from "react";
 
-const defaultState = {
-  myQuizArray: [],
-  globalQuizArray: []
-}
+// CSS
+import "./App.css";
 
-// Redux
-const reducer = (state = defaultState, action) => {
-  switch(action.type) {
-    case "ADD_QUIZ":
-      break;
-    case "":
-      break;
-    default:
-      break;
-  }
-}
+// Route Components
+import Home from "./components/routes/home/Home";
+import Quiz from "./components/routes/quiz/Quiz";
 
-let store = createStore(reducer)
+// Footer and Header components
+import Footer from "./components/sub/Footer";
+import Header from "./components/sub/Header";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // React & ReactDom would be imported at the top of this document for this method to work.
 
-
-
 export default class App extends Component {
-  
   render() {
     return (
-      <Provider store={store}>
+      <BrowserRouter>
         <div className="App">
           <Header title="React Quiz App" />
-          <MainContent />
-          <Footer footerText="Copyright &copy; 2020 Quizme"/>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/my-quizes" component={Quiz} />
+          </Switch>
+          <Footer footerText="Copyright &copy; 2020 Quizme" />
         </div>
-    </Provider>
-    )
+      </BrowserRouter>
+    );
   }
 }

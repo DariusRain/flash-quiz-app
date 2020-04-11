@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PreviewQuestion from "./PreviewQuestion";
-const Id = require("shortid");
+import {connect} from "react-redux";
+import shortid from "shortid";
+const Id = shortid;
 
-export default class QAForm extends Component {         
+ class QAForm extends Component {         
   constructor(props) {
     super(props);
     this.state = {
@@ -113,3 +115,18 @@ export default class QAForm extends Component {
     );
   }
 }
+
+
+
+const addNewQuiz = (dispatch) => {
+  return {
+    addQuiz: (payload) => {dispatch({type:'ADD_QUIZ', payload})}
+  }
+}
+
+
+
+
+
+
+export default connect(addNewQuiz)(QAForm);

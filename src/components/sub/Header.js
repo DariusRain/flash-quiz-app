@@ -1,5 +1,4 @@
 import React from "react";
-import HeaderNavBar from "../sub/HeaderNavbar";
 
 
 
@@ -14,7 +13,6 @@ class Header extends React.Component {
           className="logo"
         />
         <h1>&nbsp; {this.props.title}</h1>
-        {/* <HeaderNavBar className="HeaderNavBar"/> */}
       </header>
     );
   }
