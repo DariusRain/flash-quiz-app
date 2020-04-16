@@ -5,11 +5,17 @@ import App from './App';
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers/rootReducer"
+// Local storage redux state handler methods
+import {loadState, saveState} from './user/localStorage'
+const persistedState = loadState();
+let store = createStore(rootReducer, persistedState);
 
-
-let store = createStore(rootReducer);
-
-
+// save the state 
+store.subscribe(() => {
+  saveState({
+    myQuizArray: store.getState().myQuizArray
+  })
+})
 ReactDOM.render(
     <Provider store={store}>
 

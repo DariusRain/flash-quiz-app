@@ -3,10 +3,18 @@
 }
 body {
   margin: 0;
+  margin-bottom: 230px;
   padding: 0;
   height: 100vh;
+  background-color: #444444;
+
 }
 .App {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.MyQuizes {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,52 +22,84 @@ body {
 .Header {
 
   /* background-color: white; */
-  background-color: navy;
   color: wheat;
+
+  background-color: #444444;
   display: flex;
   flex-direction: row;
-  width: 100vw;
   flex-wrap: wrap;
+  width: 100vw;
 }
 .ButtonStyleForm {
   padding: 10px;
   margin: 5px;
   font-weight: 600;
-  background-color: #333339;
+  background-color: #444444;
   border-style: none;
   color: white;
   cursor: pointer;
-  
 }
 .CurrentQuestionsBox {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .NavBar {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  text-align: left;
+  flex-direction: column;
+  
+  margin-top: 10px;
+  height: 10%;
+  margin: 0 auto;
 }
 .QuizNumber {
-  color: navy;
-  border-radius: 100%;
-  width: 20px;
+  color:seagreen;
+  overflow-inline: hidden;
+  overflow: hidden;
+  width: 100%;
   text-align: center;
+  padding: 12px;
 }
+
 .NavBar a {
   text-decoration: none;
+  color: bisque;
   font-weight: 700;
   font-size: x-large;
-border: 2px solid navy;
-  margin-right: 10px;
+  text-align: center;
+}
+.MyStats {
+  background-color: white;
+  height: 100vh;
+  border-top-left-radius: 45%;
+  border-color: seagreen;
+  
+
 }
 .PreviewQuizes {
   text-align: center;
+
+  background-color: #444444;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-bottom-right-radius: 45%;
+  background-size: auto;
+  border-style:solid;
+  border-color: #444444;
+  border-width: 12px;
+
+  height: 40vh;
+}
+.PreviewQuizes a {
+  color: royalblue;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: 800;
 }
 .NavBar a:hover {
-  color: orange;
+  color: royalblue;
   cursor: pointer;
 }
 .QAFormBox {
@@ -72,19 +112,21 @@ border: 2px solid navy;
   
 }
 .logo {
-  background-color: wheat;
+  background-color: white;
+  border-radius: 2.5rem;
+  width: 5rem;
+  border: 2px solid seagreen;
   opacity: 0.9;
   position: relative;
 }
+
 .QAForm {
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  height: 50vh;
+  height: 80vh;
   overflow: auto;
 }
 .QAForm textarea {
@@ -98,14 +140,13 @@ border: 2px solid navy;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;
-  background-color: navy;
-  max-height: 50vh;
-  overflow: auto;
+  background-color: royalblue;
+  /* overflow: auto; */
+  
 }
 .QuestionNumber { 
   width: 10%;
   font-weight: 800;
- color: navy;
 }
 .SettingButtonsBox {
   width: 90%;
@@ -121,13 +162,13 @@ border: 2px solid navy;
   
 }
 .Q {
-  color:navy;
+  color:royalblue;
   font-weight: bold;
   float: left;
   
 }
 .PreviewQuestion {
-  background-color:  #333339;
+  background-color:  #444444;
   width: 88%;
   margin: 0 auto;
   padding: 12px;
@@ -147,7 +188,6 @@ border: 2px solid navy;
   width: 50vw;
 }
 .ButtonForm {
-  width: 20%;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -179,30 +219,41 @@ border: 2px solid navy;
   margin-left: 3px;
 }
 .SettingBarClickItem:hover {
-  background-color: #333339;
+  background-color: #444444;
 }
 .Jumbo {
-  background-color: #333339;
+  background-color: #444444;
   text-align: center;
   /* font-weight: 700; */
-  height: 20vh;
-  /* width: 100vw; */
-  color: white;
+  
+  height: 100vh;
+  width: 100vw;
+  padding-top: 133px;
+  font-size: xx-large;
+  color: wheat !important;
 }
-.HomeMain {
+.Jumbo a {
+  text-decoration: none;
+  color: royalblue;
+}
+ul  {
+  list-style-type: none;
+}
+/* .HomeMain {
   display: flex;
   flex-direction: row;  
   flex-wrap: wrap;
-}
+} */
 .SectionTop {
   width: 100vw;
-  height: 40vh;
   display: flex;
   flex-direction: column;
   text-align: center;
-
+  background-color: white;
 }
-
+h1 {
+  text-align: center;
+}
 
 .SectionMiddle {
   display: flex;
@@ -210,17 +261,19 @@ border: 2px solid navy;
   width: 100vw;
   height: 100vh;
   flex-wrap: wrap;
+  overflow: auto;
 }
 .SectionBottom {
   width: 100vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow: auto;
 
 }
 .Footer { 
    width: 100%;
-  background-color: #333339;
+  background-color: #444444;
   top: -1;
   color: white;
   text-align: center;

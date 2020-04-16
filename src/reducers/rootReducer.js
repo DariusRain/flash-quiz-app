@@ -1,25 +1,22 @@
-const defaultState = {
-  myQuizArray: [
-    {
-      quizName: "Quiz Name",
-      questions: [
-        {
-          qustion: "What is react?",
-          answer: "A open source library launched by Facebook used for developing UIs",
-          stats: [],
-        },
-     
-      ],
-    },
-  ],
-  
-  globalQuizArray: [],
-};
-const rootReducer = (state = defaultState, action) => {
+import mockData from '../mock/mock-test-global-redux-state'
+
+
+
+
+
+const rootReducer = (state = mockData, action) => {
+  const {payload } = action
   switch (action.type) {
     case "ADD_QUIZ":
-      state = [...state.myQuizArray, action.payload]
-      return state;
+      return {
+        ...state,
+        myQuizArray: [...state.myQuizArray, payload]
+        
+      }
+    case "GET_QUIZ_BY_ID": 
+      const findQuiz = state.filter(quiz => quiz.id === payload.id);
+      return findQuiz;
+
     case "DELETE_QUIZ":
       break;
     default:

@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 
 export default class PreviewQuestion extends Component {
-  constructor(props) {
-    super(props);
-    // This binds the function created in the scope of the above class.
-    // this.removeQuestion = this.removeQuestion.bind(this);
-  }
+
 
   render() {
     const {
-      questionId,
+      id,
       question,
       answer,
       removeQuestion,
@@ -22,11 +18,11 @@ export default class PreviewQuestion extends Component {
           <div className="SettingButtonsBox">
           <span className="SettingBarClickItem"  onClick={removeQuestion}>
             {" "}
-            <span role="img" id={questionId}>❌</span>
+            <span role="img" aria-label="Delete" id={id}>❌</span>
           </span>
           <span className="SettingBarClickItem">
             {" "}
-            <span role="img">📝</span>
+            <span role="img" aria-label="Edit">📝</span>
           </span>
           </div>
         </div>

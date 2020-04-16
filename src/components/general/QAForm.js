@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PreviewQuestion from "./PreviewQuestion";
 import {connect} from "react-redux";
-import shortid from "shortid";
-const Id = shortid;
+
+import {v4} from "uuid";
+const id = v4;
 
  class QAForm extends Component {         
   constructor(props) {
@@ -42,7 +43,7 @@ const Id = shortid;
       this.state.questionsArr.push({
         question: this.state.question,
         answer: this.state.answer,
-        questionId: Id.generate()
+        id: id()
       });
       this.setState({
         question: "",
@@ -55,21 +56,30 @@ const Id = shortid;
     console.log(this.state.questionsArr);
     this.setState({
       questionsArr: this.state.questionsArr.filter(
-        questionObject => questionObject.questionId != e.target.id
+        questionObject => questionObject.id !== e.target.id
       )
     });
   };
 
   submitQuiz = e => {
     e.preventDefault();
-    if(this.state.questionsArr) {
-    console.log('Feature Not added yet')
+    let nameOfQuiz = prompt("Name of quiz?")
+    if(nameOfQuiz || false) {
+    this.props.addQuiz({quizName: nameOfQuiz, questions:this.state.questionsArr, stats:[], id: id()})
+    this.setState({
+      questionsArr:[],
+      question:"",
+      answer:""
+    })
+    } else if(nameOfQuiz != null) {
+      alert("Quiz name is required!")
     }
+    
   }
 
   render() {
     return (
-      <div className="QAForm">
+      <div className="QAForm"  id="qaform" >
        <h1>Create a quiz</h1>
         <h3>Question #{this.state.questionsArr.length + 1}</h3>
         <form>
@@ -98,13 +108,13 @@ const Id = shortid;
         </form>
         <div className="QuestionBoxMain">
           {this.state.questionsArr.map((qObj, indexNum) => {
-            const { question, answer, questionId } = qObj;
+            const { question, answer, id } = qObj;
             return (
               <PreviewQuestion
                 question={question}
                 answer={answer}
-                questionId={questionId}
-                key={questionId}
+                id={id}
+                key={id}
                 indexOfQuestion={indexNum}
                 removeQuestion={this.removeQuestion}
               />
@@ -118,15 +128,19 @@ const Id = shortid;
 
 
 
-const addNewQuiz = (dispatch) => {
+const addNewQuiz = dispatch => {
   return {
     addQuiz: (payload) => {dispatch({type:'ADD_QUIZ', payload})}
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    state
   }
 }
 
 
 
 
-
-
-export default connect(addNewQuiz)(QAForm);
+export default connect(mapStateToProps, addNewQuiz)(QAForm);

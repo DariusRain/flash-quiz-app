@@ -1,5 +1,4 @@
 import React from "react";
-import Jumbo from './Jumbo'
 
 class SectionTop extends React.Component {
 

@@ -6,15 +6,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // Sub components
-import HomeMain from './HomeMain';
+import Home from '../../general/Home';
 
-function Home(props) {
+function Index(props) {
     
-        console.log(props)
+        // console.log(props)
         return (
-            <div className="Home">
-            <HomeMain store={props.store}/>
-            </div>
+            <Home store={props.storeState}/>
         )
     
 }
@@ -27,4 +25,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Index)

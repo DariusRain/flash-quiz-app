@@ -3,7 +3,7 @@ class Jumbo extends React.Component {
   render() {
     return (
       <div className="Jumbo">
-        <p>{this.props.jumboText}</p>
+        {this.props.children}
       </div>
     );
   }
