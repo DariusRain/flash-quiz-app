@@ -6,7 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // Sub components
-import Home from '../../general/Home';
+import Home from './Home';
 
 function Index(props) {
     

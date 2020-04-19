@@ -9,27 +9,13 @@ body {
   background-color: #444444;
 
 }
-.App {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+
 .MyQuizes {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.Header {
 
-  /* background-color: white; */
-  color: wheat;
-
-  background-color: #444444;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100vw;
-}
 .ButtonStyleForm {
   padding: 10px;
   margin: 5px;
@@ -119,8 +105,12 @@ body {
   opacity: 0.9;
   position: relative;
 }
+svg {
+  position: absolute;
+  max-width: 99vw;
+}
 
-.QAForm {
+.QuizForm {
   background-color: white;
   
   text-align: center;
@@ -129,7 +119,7 @@ body {
   height: 80vh;
   overflow: auto;
 }
-.QAForm textarea {
+.QuizForm textarea {
   max-width: 99%;
   width: 50%;
   font-size: large;
@@ -144,10 +134,7 @@ body {
   /* overflow: auto; */
   
 }
-.QuestionNumber { 
-  width: 10%;
-  font-weight: 800;
-}
+
 .SettingButtonsBox {
   width: 90%;
   display: flex;
@@ -167,12 +154,17 @@ body {
   float: left;
   
 }
-.PreviewQuestion {
-  background-color:  #444444;
-  width: 88%;
+
+.aboutQuiz {
+  color: white;
+  text-align: center;
   margin: 0 auto;
-  padding: 12px;
-  border: 2px solid white;
+}
+
+
+.root {
+  display: flex;
+  flex-direction: column;
   
 }
 .InputLabel {
@@ -221,17 +213,6 @@ body {
 .SettingBarClickItem:hover {
   background-color: #444444;
 }
-.Jumbo {
-  background-color: #444444;
-  text-align: center;
-  /* font-weight: 700; */
-  
-  height: 100vh;
-  width: 100vw;
-  padding-top: 133px;
-  font-size: xx-large;
-  color: wheat !important;
-}
 .Jumbo a {
   text-decoration: none;
   color: royalblue;
@@ -244,39 +225,8 @@ ul  {
   flex-direction: row;  
   flex-wrap: wrap;
 } */
-.SectionTop {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  background-color: white;
-}
-h1 {
+h1  {
   text-align: center;
 }
 
-.SectionMiddle {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  flex-wrap: wrap;
-  overflow: auto;
-}
-.SectionBottom {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: auto;
 
-}
-.Footer { 
-   width: 100%;
-  background-color: #444444;
-  top: -1;
-  color: white;
-  text-align: center;
-  padding: 40px;
-  
-}

@@ -1,13 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-class SectionMiddle extends React.Component {
-    render() {
+function SectionMiddle (props) {
         return (
-          <div className="SectionMiddle">
-           {this.props.children}
+          <div className="SectionMiddle" style={style}>
+           {props.children}
           </div>
-        );
-      }
+        )
 }
 
-export default SectionMiddle;
+const style = {
+  display:" flex",
+  flexDirection:" column",
+  width:  " 100vw",
+  height:" 100vh",
+  flexWrap:" wrap",
+  overFlow:" auto"
+}
+
+export default SectionMiddle

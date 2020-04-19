@@ -1,15 +1,13 @@
 import React from "react";
-import SectionTop from "../containers/SectionTop";
-import SectionMiddle from "../containers/SectionMiddle";
-import SectionBottom from "../containers/SectionBottom";
-import QAForm from "./QAForm";
-import Jumbo from "./Jumbo";
-class Home extends React.Component {
-  render() {
-    const {store} = this.props;
+import SectionTop from "../../containers/SectionTop";
+import SectionMiddle from "../../containers/SectionMiddle";
+import SectionBottom from "../../containers/SectionBottom";
+import QAForm from "../../misc/QuizForm";
+import Jumbo from "../../misc/Jumbo";
+function Home({store}) {
     return (
-      <div className="HomeMain">
-        <SectionTop >
+      <div>
+        <SectionTop>
           <Jumbo>
             <ul>
               <li>Get started by creating your <a href="#qaform">first quiz!</a></li>
@@ -18,7 +16,7 @@ class Home extends React.Component {
 
         </SectionTop>
 
-        <SectionMiddle >
+        <SectionMiddle>
           <QAForm store={store} />
         </SectionMiddle>
 
@@ -28,6 +26,9 @@ class Home extends React.Component {
       </div>
     );
   }
-}
+
+
+
+
 
 export default Home;

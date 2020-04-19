@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import QuizUi from '../../general/QuizUi'
+import QuizMode from './QuizMode'
 class Index extends Component {
 
     render() {
@@ -8,7 +8,7 @@ class Index extends Component {
     // console.log(12232, this.props)
 
     return (
-             <QuizUi quiz={this.props.quiz} />           
+             <QuizMode quiz={this.props.quiz} />           
             )
 
     }

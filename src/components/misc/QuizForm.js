@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {v4} from "uuid";
 const id = v4;
 
- class QAForm extends Component {         
+ class QuizForm extends Component {         
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +13,9 @@ const id = v4;
       answer: "",
       questionsArr: []
     };
+
+
+    // This is 
     // this.handleQuestionInput = this.handleQuestionInput.bind(this);
     // this.handleAnswerInput = this.handleAnswerInput.bind(this);
     // this.nextQuestion = this.nextQuestion.bind(this);
@@ -28,14 +31,6 @@ const id = v4;
     }
   };
 
-  // handleAnswerInput = e => {
-  //   this.setState({ answer: e.target.value });
-  //   if (this.state.answer) {
-  //     e.target.style = "border: 1px solid blue; background-color:white;";
-  //   } else {
-  //     e.target.style = "border: 1px solid red; ";
-  //   }
-  // };
 
   nextQuestion = e => {
     e.preventDefault();
@@ -78,8 +73,9 @@ const id = v4;
   }
 
   render() {
+
     return (
-      <div className="QAForm"  id="qaform" >
+      <div className="QuizForm" id="qaform" >
        <h1>Create a quiz</h1>
         <h3>Question #{this.state.questionsArr.length + 1}</h3>
         <form>
@@ -142,5 +138,4 @@ const mapStateToProps = state => {
 
 
 
-
-export default connect(mapStateToProps, addNewQuiz)(QAForm);
+export default connect(mapStateToProps, addNewQuiz)(QuizForm);

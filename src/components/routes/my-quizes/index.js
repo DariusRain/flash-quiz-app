@@ -1,5 +1,5 @@
 import React from 'react'
-import MyQuizes from '../../general/MyQuizes';
+import MyQuizes from './MyQuizes';
 import {connect} from 'react-redux';
 // import {BrowserRouter} from 'react-router-dom'
 
