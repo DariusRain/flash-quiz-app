@@ -9,11 +9,9 @@ function SectionTop (props) {
 }
 
 const style = {
-  width: "100vw",
   display: "flex",
-  flexDirection: "column",
-  textAlign: "center",
-  backgroundColor: "white",
+  flexDirection: "row",
+  justifyContent: "space-evenly"
 }
 
 export default SectionTop;

@@ -10,7 +10,7 @@ const rootReducer = (state = mockData, action) => {
   // This payload is a object that looks like {type:"NAME-OF-TYPE", {payload: {...}}}
   const {payload} = action;
   switch (action.type) {
-    case "ADD-QUIZ":
+    case "ADD_QUIZ":
       return {
         ...state,
         myQuizArray: [...state.myQuizArray, payload]

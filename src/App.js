@@ -1,5 +1,5 @@
 // Node Modules
-import React, { Component } from "react";
+import React from "react";
 
 // npm i react-redux
 // Destruct from the package 'connect' a higer oder component
@@ -13,53 +13,53 @@ import { connect } from "react-redux";
 // CSS
 import "./App.css";
 
-
 // React Router
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
-
 
 // Route Components
 import Home from "./components/routes/home";
 import MyQuizes from "./components/routes/my-quizes";
 import QuizMode from "./components/routes/quiz-mode";
-
+import CreateQuiz from "./components/routes/create-quiz";
 // Container components
-import Footer from "./components/containers/Footer";
 import Header from "./components/containers/Header";
-import NavBar from './components/containers/Navbar';
+import NavBar from "./components/containers/Navbar";
 
-
-// Misc Components 
-import Logo from "./components/misc/Logo"
-import MyQuizCount from "./components/misc/MyQuizCount"
+// Misc Components
+import Logo from "./components/misc/Logo";
+import MyQuizCount from "./components/misc/MyQuizCount";
 // This is the MAIN COMPONENT of your application though you could have
-// multiple but normally 'App' is the only one. 
+// multiple but normally 'App' is the only one.
 // Also the only one that gets imported into the index.js file.
 function App({ store }) {
+  
   return (
     <BrowserRouter>
-      <div style={style}>
-        <Header>
+      <div style={style.main}>
+        <Header style={style.header}>
+        <NavLink  style={style.logoLink} to="/">
+              <Logo className="logo" />
+            </NavLink>
           <NavBar>
-            <NavLink to="/">
-              <Logo />
-            </NavLink>
-            <NavLink to="/my-quizes">
-              <MyQuizCount myQuizArray={store.myQuizArray}/>
-            </NavLink>
+            <div style={style.navbar}>
+              <NavLink className="hover" style={style.navLink} to="/my-quizes">
+                <span className="hover" >My Quizes &nbsp;</span>
+                <MyQuizCount myQuizArray={store.myQuizArray} />
+              </NavLink>
+              <NavLink style={style.navLink} to="/create-quiz">
+                <span className="hover" >New Quiz</span>
+              </NavLink>
+            </div>
           </NavBar>
         </Header>
 
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/my-quizes" component={MyQuizes} />
+          <Route path="/create-quiz" component={CreateQuiz} />
           <Route path="/quiz-mode/:quiz_id" component={QuizMode} />
           {/* <Route path="/public-quizes/:public_quiz_id" component={Quiz} /> */}
         </Switch>
-
-        <Footer>
-          <h2>Copyright &copy; 2020 Quizme</h2>
-        </Footer>
       </div>
     </BrowserRouter>
   );
@@ -72,9 +72,30 @@ const mapStateToProps = (state) => {
 };
 
 const style = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
+  main: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  navLink: {
+    textDecoration: "none",
+    color: "#005080",
+    margin: "0.3rem",
+    width: "25%",
+  },
+  navbar: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+    width: "100%"
+  },
+  header: {
+    position: "absolute",
+  },
+  logoLink: {
+    marginRight: "1rem",
+  },
 };
 
 export default connect(mapStateToProps)(App);

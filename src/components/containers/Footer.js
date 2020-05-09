@@ -10,12 +10,12 @@ function Footer(props) {
 
 
 const style = {
-  width: "100%",
+  width: "",
   backgroundColor: "#444444",
   top: "-1",
   color: "white",
   textAlign: "center",
-  padding: "40px"
+  marginTop: "300px"
 }
 
 export default Footer;

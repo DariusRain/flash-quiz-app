@@ -10,11 +10,7 @@ function Header(props) {
 
 
 const style = {
-  color: "wheat",
-  backgroundColor: "#444444",
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  width: "100vw",
+ backgroundColor: "#dddddd",
+  width:"100%",
 }
 export default Header;

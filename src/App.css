@@ -1,232 +1,170 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-body {
-  margin: 0;
-  margin-bottom: 230px;
-  padding: 0;
-  height: 100vh;
-  background-color: #444444;
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#005080;
+}
+.quiz-link {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #dddddd;
+    margin: 2rem;
+    width: 100%;
+}
+
+.quiz-link:hover {
+    color: orange;
+}
+
+.quiz-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 50vh;
+    max-width: 50vw;
+    overflow-y: auto;
+}
+
+.QuestionBoxMain {
+    width: "100%";
+}
+
+header {
+    box-shadow: 0rem 0rem 0.4rem #000000;
+
+}
+span {
+    font-size: 1rem;
+}
+.Jumbo * {
+    font-size: 0.75rem;
+    color: #dddddd;
+    text-decoration: none;
+}
+
+.Jumbo a:hover {
+    color: orange;
+}
+
+.quiz-mode {
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+}
+
+.QuestionBoxMain {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+    padding-right: 13rem;
 }
 
 .MyQuizes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+.MyQuizes div {
+    display: flex;
+    flex-direction: row;
 }
 
-.ButtonStyleForm {
-  padding: 10px;
-  margin: 5px;
-  font-weight: 600;
-  background-color: #444444;
-  border-style: none;
-  color: white;
-  cursor: pointer;
-}
-.CurrentQuestionsBox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.MyQuizes h1, h3, h2 {
+    color: orange;
 }
 
-.NavBar {
-  display: flex;
-  flex-direction: column;
-  
-  margin-top: 10px;
-  height: 10%;
-  margin: 0 auto;
-}
-.QuizNumber {
-  color:seagreen;
-  overflow-inline: hidden;
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
-  padding: 12px;
-}
 
-.NavBar a {
-  text-decoration: none;
-  color: bisque;
-  font-weight: 700;
-  font-size: x-large;
-  text-align: center;
+.QuizForm div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-.MyStats {
-  background-color: white;
-  height: 100vh;
-  border-top-left-radius: 45%;
-  border-color: seagreen;
-  
+.QuizForm h1, h2 {
+    color: #dddddd;
+}
+.QuizForm button {
+    background-color: #dddddd;
+    border-style: none;
+    margin: 0.4rem;
+    color: #005080;
+    font-size: 1rem;
 
 }
-.PreviewQuizes {
-  text-align: center;
+.QuizForm button:hover {
 
-  background-color: #444444;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  border-bottom-right-radius: 45%;
-  background-size: auto;
-  border-style:solid;
-  border-color: #444444;
-  border-width: 12px;
-
-  height: 40vh;
+    color: orange;
+    cursor: pointer;
 }
-.PreviewQuizes a {
-  color: royalblue;
-  text-decoration: none;
-  font-size: larger;
-  font-weight: 800;
+.SectionTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-.NavBar a:hover {
-  color: royalblue;
-  cursor: pointer;
-}
-.QAFormBox {
-  margin: 0 auto;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  
-}
-.logo {
-  background-color: white;
-  border-radius: 2.5rem;
-  width: 5rem;
-  border: 2px solid seagreen;
-  opacity: 0.9;
-  position: relative;
-}
-svg {
-  position: absolute;
-  max-width: 99vw;
-}
-
 .QuizForm {
-  background-color: white;
-  
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: 80vh;
-  overflow: auto;
+    margin: 0 auto;
+    width: 50%;
+    display: flex;;
+}
+fieldset {
+    width: 50%;
+    border-color: orange;
+}
+legend {
+    color: orange;
+    font-size: 1rem;
 }
 .QuizForm textarea {
-  max-width: 99%;
-  width: 50%;
-  font-size: large;
-  background-color: #fdfd96;
-  text-align: center;
-}
-.QuestionBoxMain {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap-reverse;
-  background-color: royalblue;
-  /* overflow: auto; */
-  
+    margin: 0 auto;
+    font-size: 1rem;
+    background-color: #dddddd;
 }
 
-.SettingButtonsBox {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-
-}
-.A {
-  color: red;
-  font-weight: bold;
-  float: left;
-  
-}
-.Q {
-  color:royalblue;
-  font-weight: bold;
-  float: left;
-  
+ul {
+    list-style-type: none;
 }
 
-.aboutQuiz {
-  color: white;
-  text-align: center;
-  margin: 0 auto;
+li {
+    font-size: 1rem !important;
+}
+
+a {
+    font-size: 1rem;
 }
 
 
-.root {
-  display: flex;
-  flex-direction: column;
-  
-}
-.InputLabel {
-  font-size: large;
-  padding: 3px;
-}
-.InputBox {
-  padding: 10px;
-  width: 50vw;
-}
-.TextAreaBox {
-  padding: 10px;
-  width: 50vw;
-}
-.ButtonForm {
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.SettingBar {
-  width: 88%;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  padding: 2px;
-  margin: 0 auto;
-}
-.QABox {
-  background-color: white;
-  width: 50vw;
-  max-height: 10vh;
-  margin: 0 auto;
-  overflow-y: auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-.QABox:hover {
-  background-color: #fdfd96;
 
+.hover:hover {
+    color: orange !important;
+    cursor: pointer;
+}
+.logo {
+    border-top-right-radius: 0.175rem;
+    border-bottom-left-radius: 0.175rem;
+    margin: 0.4rem;
+    border: 0.01rem solid #dddddd;
+    box-shadow: 0.01rem 0.02rem 0.1rem #005080;
+    float: left;   
 }
 
-.SettingBarClickItem {
-  cursor: pointer;
-  margin-left: 3px;
-}
-.SettingBarClickItem:hover {
-  background-color: #444444;
-}
-.Jumbo a {
-  text-decoration: none;
-  color: royalblue;
-}
-ul  {
-  list-style-type: none;
-}
-/* .HomeMain {
-  display: flex;
-  flex-direction: row;  
-  flex-wrap: wrap;
-} */
-h1  {
-  text-align: center;
+.logo:hover {
+    background-color: "orange !important";
+    box-shadow: none;
 }
 
+a img {
+    height: 3rem;
+    
+}
 
+.QuestionNumber {
+    font-size: 1rem;    
+    color: orange;
+}

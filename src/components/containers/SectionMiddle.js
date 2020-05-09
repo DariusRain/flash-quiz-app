@@ -9,12 +9,9 @@ function SectionMiddle (props) {
 }
 
 const style = {
-  display:" flex",
-  flexDirection:" column",
-  width:  " 100vw",
-  height:" 100vh",
-  flexWrap:" wrap",
-  overFlow:" auto"
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-evenly"
 }
 
 export default SectionMiddle

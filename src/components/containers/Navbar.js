@@ -4,7 +4,7 @@ import { withRouter} from "react-router-dom";
 function NavBar(props) {
 
         return(
-        <nav className="NavBar" style={style}>   
+        <nav style={style}>   
             {props.children}
         </nav>
         )
@@ -12,10 +12,7 @@ function NavBar(props) {
 }
 
 const style = {
-    display: "flex",
-    flexDirection: "row",
-    margin: "10px",
-    height: "10%",
-    color: "white"
-}
+        display: "flex",
+        flexDirection: "row"
+}   
 export default withRouter(NavBar);

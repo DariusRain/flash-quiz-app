@@ -9,20 +9,24 @@ function PreviewQuestion({
   indexOfQuestion,
 }) {
   return (
-    <div className="PreviewQuestion" style={style}>
+    <div className="PreviewQuestion" style={style.main}>
       <SettingsBar removeQuestion={removeQuestion} indexOfQuestion={indexOfQuestion} id={id}/>
       <TextBox text={question} type={"Q"} />
       <TextBox text={answer} type={"A"} />
+
     </div>
   );
 }
 
 const style = {  
-  backgroundColor:"#444444",
-  width: "88%",
-  margin: "0 auto",
-  padding: "12px",
-  border: "2px solid white", 
+    main: {
+        display: "flex",
+        flexDirection: "column",
+    },
+    settingsBar: {
+      width: "100%"
+    }
+    
  }
 
 

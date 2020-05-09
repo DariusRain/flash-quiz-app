@@ -4,29 +4,32 @@ const mockData = {
       quizName: "Mock-React-Quiz",
       questions: [
         {
-          qustion: "What is react?",
+          question: "What is react?",
           answer: "A open source library launched by Facebook used for developing UIs",
         },
         {
-          qustion: "What is JSX?",
+          question: "What is JSX?",
           answer: "A JavaScript Exstension that React takes advantage of which allows developers to write a single html element or an entire React component at ease.",
         },
         {
-          qustion: "What is react?",
-          answer: "A open source library launched by Facebook used for developing UIs",
+          question: "What are states?",
+          answer: "...",
         },
         {
-          qustion: "What is react?",
-          answer: "A open source library launched by Facebook used for developing UIs",
+          question: "When are states used?",
+          answer: "...",
         },
         {
-          qustion: "What is react?",
-          answer: "A open source library launched by Facebook used for developing UIs",
+          question: "What are props?",
+          answer: "...",
         },
         {
-          qustion: "What is react?",
-          answer: "A open source library launched by Facebook used for developing UIs",
+          question: "When dont you need a class component?",
+          answer: "...",
         },
+        {
+          
+        }
       ],
       id: '0wzxoe-'
     },

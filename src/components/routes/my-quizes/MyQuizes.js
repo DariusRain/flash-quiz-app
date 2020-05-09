@@ -3,20 +3,24 @@ import SectionMiddle from "../../containers/SectionMiddle";
 import SectionBottom from "../../containers/SectionBottom";
 import { Link } from "react-router-dom";
 import React from "react";
-import { v4 } from "uuid";
 
 function MyQuizes(props) {
   const { myQuizArray } = props.store;
   return (
     <div className="MyQuizes">
       <SectionTop>
-        <div className="PreviewQuizes">
-          <h1>Your Quizes:</h1>
+        <div className="quiz-links">
+          <h2 style={{color: "orange"}}>My Quizes</h2>
           {myQuizArray ? (
-            myQuizArray.map(({ id, quizName }) => (
-              <Link to={`/quiz-mode/${id}`} key={id}>
-                {quizName}
-              </Link>
+            myQuizArray.map(({ id, quizName }, index) => (
+              <div>
+                <Link className={"quiz-link"} to={`/quiz-mode/${id}`} key={id}>
+                  {index + 1}:
+                  &nbsp;
+                  &nbsp;
+                  {`${quizName}`}
+                </Link>
+              </div>
             ))
           ) : (
             <p style={{ color: "red" }}>No quizes created</p>
@@ -26,15 +30,17 @@ function MyQuizes(props) {
 
       <SectionMiddle>
         <div className="MyStats">
-          <h1>Your stats</h1>
+          <h3>Your stats</h3>
         </div>
       </SectionMiddle>
 
       <SectionBottom>
-        <h1>Settings</h1>
+        <h3>Settings</h3>
       </SectionBottom>
     </div>
   );
 }
+
+const style = {};
 
 export default MyQuizes;

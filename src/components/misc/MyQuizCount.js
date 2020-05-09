@@ -1,16 +1,29 @@
-import React from 'react'
+import React from "react";
 
-function MyQuizCount({myQuizArray}) {
-    return (
-        <span className="QuizNumber" style={style}>
-        My Quizes {myQuizArray.length ? myQuizArray.length : 0}
-        </span>
-    )
+function MyQuizCount({ myQuizArray }) {
+  return (
+    <span className="QuizNumber" style={style.main}>
+
+      <span className="hover" style={style.quizNumber}>
+        {myQuizArray.length ? myQuizArray.length : 0}
+      </span>
+    </span>
+  );
 }
 
 const style = {
-    width: "10%",
-    fontWeight: "800"
-}
+  main: {
+    textDecoration: "none",
+    color: "white",
+    fontSize: "0.9rem",
+  },
+  quizNumber: {
+    color: "#dddddd",
+    backgroundColor: "#005080",
+    borderRadius: "0.2rem",
+    padding: "0.1rem",
+    paddingBottom: "0.2rem"
+  },
+};
 
-export default MyQuizCount
+export default MyQuizCount;
