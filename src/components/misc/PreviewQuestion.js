@@ -11,8 +11,8 @@ function PreviewQuestion({
   return (
     <div className="PreviewQuestion" style={style.main}>
       <SettingsBar removeQuestion={removeQuestion} indexOfQuestion={indexOfQuestion} id={id}/>
-      <TextBox text={question} type={"Q"} />
-      <TextBox text={answer} type={"A"} />
+      <TextBox text={question} key={"0-Q"} type={"Q"} />
+      <TextBox text={answer} key={"1-A"} type={"A"} />
 
     </div>
   );
@@ -22,6 +22,7 @@ const style = {
     main: {
         display: "flex",
         flexDirection: "column",
+        width:"100%"
     },
     settingsBar: {
       width: "100%"

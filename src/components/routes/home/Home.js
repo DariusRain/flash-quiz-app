@@ -30,8 +30,8 @@ function Home({ store }) {
   );
 }
 
-const style = {
-  main: {},
-};
+// const style = {
+//   main: {},
+// };
 
 export default Home;

@@ -32,22 +32,22 @@ import MyQuizCount from "./components/misc/MyQuizCount";
 // multiple but normally 'App' is the only one.
 // Also the only one that gets imported into the index.js file.
 function App({ store }) {
-  
   return (
     <BrowserRouter>
       <div style={style.main}>
         <Header style={style.header}>
-        <NavLink  style={style.logoLink} to="/">
-              <Logo className="logo" />
-            </NavLink>
           <NavBar>
             <div style={style.navbar}>
+              <NavLink style={style.logoLink} to="/">
+                <Logo className="logo" />
+              </NavLink>
+
               <NavLink className="hover" style={style.navLink} to="/my-quizes">
-                <span className="hover" >My Quizes &nbsp;</span>
+                <span className="hover">My Quizes &nbsp;</span>
                 <MyQuizCount myQuizArray={store.myQuizArray} />
               </NavLink>
               <NavLink style={style.navLink} to="/create-quiz">
-                <span className="hover" >New Quiz</span>
+                <span className="hover">New Quiz</span>
               </NavLink>
             </div>
           </NavBar>
@@ -79,16 +79,16 @@ const style = {
   },
   navLink: {
     textDecoration: "none",
+    fontSize: "3rem",
+    fontWeight: "bold",
     color: "#005080",
-    margin: "0.3rem",
-    width: "25%",
+    margin: "1rem"
   },
   navbar: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "flex-end",
-    width: "100%"
+    width: "100%",
   },
   header: {
     position: "absolute",

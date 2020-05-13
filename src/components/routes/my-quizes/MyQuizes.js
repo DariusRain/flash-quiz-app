@@ -41,6 +41,6 @@ function MyQuizes(props) {
   );
 }
 
-const style = {};
+// const style = {};
 
 export default MyQuizes;

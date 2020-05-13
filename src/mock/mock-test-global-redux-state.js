@@ -2,6 +2,10 @@ const mockData = {
   myQuizArray: [
     {
       quizName: "Mock-React-Quiz",
+          
+      yourGrades: [
+        {percentage: 67.76, dateTaken: "5/5/2020"}
+      ],
       questions: [
         {
           question: "What is react?",
@@ -27,10 +31,8 @@ const mockData = {
           question: "When dont you need a class component?",
           answer: "...",
         },
-        {
-          
-        }
       ],
+      
       id: '0wzxoe-'
     },
   ],

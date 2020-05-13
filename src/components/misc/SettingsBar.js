@@ -1,45 +1,44 @@
 import React from "react";
 function SettingsBar({ indexOfQuestion, removeQuestion, id }) {
   return (
-    <div style={style.main} className="SettingBar">
+    <span style={style.main} className="SettingBar">
       <span style={style.questionNumber} className="QuestionNumber">
         Question #{indexOfQuestion + 1}
       </span>
-      <div style={style.buttonList} className="SettingButtonsBox">
-        <span className="SettingBarClickItem" onClick={removeQuestion}>
+      <span style={style.buttonList} className="SettingButtonsBox">
+        <span  onClick={removeQuestion}>
           {" "}
-          <span style={style.click} role="img" aria-label="Delete" id={id}>
+          <span className="SettingBarClickItem" style={style.click} role="img" aria-label="Delete" id={id}>
             ❌
           </span>
         </span>
-        <span style={style.click} className="SettingBarClickItem">
+        <span >
           {" "}
-          <span role="img" aria-label="Edit">
+          <span className={"SettingBarClickItem"} style={style.click} role="img" aria-label="Edit">
             📝
           </span>
         </span>
-      </div>
-    </div>
+      </span>
+    </span>
   );
 }
 
 const style = {
   main: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    width: "100%"
+    margin: "1rem",
+    width: "100%",
+
   },
   buttonList: {
-    width: "100%",
+    float: "right"
   },
   click: {
     cursor: "pointer",
+
   },
 
   questionNumber: {
-    color: "orange",
-    width: "100%",
+    color: "#dddddd",
     fontSize: "0.5rem !important"
   },
 };

@@ -1,121 +1,117 @@
 import React, { Component, Fragment } from "react";
-import QuizUi from "../../misc/QuizUi";
-
+ // import {WEBSTER_KEY} from "../../../set_keys"
 
 // Logical Component for the QuizUi
-class QuizMode extends Component {
-  constructor(props) {
-    super(props);
-    // Hard copy the default state.
-    this.state = {   
-      questions: {...this.props.quiz.questions},
-      onCurrentQuestionNumber: 0,
-      onCurrentQuestion: "",
-      input: "",
-      time: 0,
-      shouldRun: false,
-      answered: [], };
-  }
+function QuizMode({
+  //  Props live @QuizMode.js see comments at the very bottom there.
+  //  Every prop below is required in order to make a compatible component.
 
-  render() {
-    // Did this in order to pass the methods above to props
-    const methods = {
-      handleInput: this.handleInput,
-      run: this.run,
-      nextQuestion: this.nextQuestion,
-      setTimer: this.setTimer,
-    };
-    return (
-      <Fragment>
-        {/* <Timer /> */}
-        <QuizUi {...this.state} {...this.props.quiz} {...methods} />;
-      </Fragment>
-    )
-    
-  }
+  // Methods
+  runQuiz,
+  nextQuestion,
+  nextAnswer,
+  setTimer,
+  handleInput,
 
-  // When component mounts hard copy the questions passed as props
-  // from the redux store in this directories index.js file.
-  // Sets time for quiz (Not functional yet)
-  setTimer = (e) => {
-    return this.setState({
-      ...this.state,
-      time: {
-        minutes: Math.abs(e.target.value),
-        seconds: 0,
-      },
-    })
-  }
+  // Objects
+  questions,
 
+  // Booleans
+  shouldRunQuiz,
+  shouldRunCheck,
 
-  //  Submits input to answer array and displays the next question,
-  // by changing the value of onCurrentQuestionNumber from state.
-  nextQuestion = (e) => {
-    e.preventDefault();
-    const { onCurrentQuestionNumber, questions, input } = this.state;
-    if (questions[onCurrentQuestionNumber]["question"]) {
-      this.setState({
-        ...this.state,
-        onCurrentQuestionNumber: onCurrentQuestionNumber + 1,
-        onCurrentQuestion: questions[onCurrentQuestionNumber]["question"],
-        answered: [
-          ...this.state.answered,
-          { ...questions[onCurrentQuestionNumber], myAnswer: input },
-        ],
-      });
-    } else {
-      alert("Finished!");
-      this.setState({
-        questions: {...this.props.quiz.questions},
-        onCurrentQuestionNumber: 0,
-        onCurrentQuestion: "",
-        input: "",
-        time: 0,
-        shouldRun: false,
-        answered: [],
-      });
-    }
-  };
+  // Strings
+  input,
+  onQuestion,
+  onAnswer,
+  yourAnswer,
+  quizName,
 
-  upClickCount = () => {
-    this.setState({
-      ...this.state,
-      clickCount: this.state.clickCount + 1
-    })
-  }
+  // Integers
+  time,
+}) {
+  return (
+    <Fragment>
+      <div className="QuizUi">
+        <h3>
+          {quizName} <br /> Questions: {questions.length}
+        </h3>
+        <div>
+          <fieldset>
+            <legend>Time Quiz</legend>
+            <input
+              type="number"
+              placeholder="How many minutes?"
+              // value={time.minutes}
+              onChange={setTimer}
+            />
+            <br />
+            <button onClick={runQuiz}>Start</button>{" "}
+          </fieldset>
+          <div className="StartQuizSection">
+            <div className="Timer">
+              <h3 className="Time">Time: </h3>
+              <span className="TimeTicking">
+                {time.minutes
+                  ? `${time.minutes} min, ${time.seconds} sec`
+                  : `0 min, 0 sec`}
+              </span>
+            </div>
+          </div>
+        </div>
 
-  // This function fires when start is pressed and begins the quiz.
-  run = (e) => {
-    const { shouldRun, clickCount } = this.state;
-    
-    if (shouldRun === false) {
-      this.setState({
-        ...this.state,
-        shouldRun: true,
-        onCurrentQuestion: this.state.questions[0]["question"]
-      });
-      e.target.innerText = "Cancel";
-    } else {
-      this.setState({
-        questions: {...this.props.quiz.questions},
-        onCurrentQuestionNumber: 0,
-        onCurrentQuestion: "",
-        input: "",
-        time: 0,
-        shouldRun: false,
-        answered: [],
-      });
-      e.target.innerText = "Start";
-    }
-  } 
+        {shouldRunQuiz ? (
+          <div className="FlashQuizArea ">
+            <h1>{onQuestion || ""}</h1>
+            <form className="FlashQuizForm" onSubmit={nextQuestion}>
+              <textarea name="answer" value={input} onChange={handleInput} />
+              <br />
+              <button className="btn-normal Center"> Next </button>
+            </form>
+          </div>
+        ) : null}
 
-  // This is just the common handle input method
-  handleInput = (e) => {
-    this.setState({
-      ...this.state,
-      input: e.target.value,
-    });
-  };
+        {shouldRunCheck ? (
+          <div className="FlashQuizArea">
+            <fieldset>
+            <legend>Question:</legend>
+            <h1>{onQuestion}</h1>
+            </fieldset>
 
+            <fieldset>
+            <legend>Answer:</legend>
+            <h2>{onAnswer}</h2>
+            </fieldset>
+
+            <fieldset>
+            <legend>Your Answer:</legend>
+            <h2>{yourAnswer}</h2>
+            </fieldset>
+            <form>
+              {" "}
+              <input type="radio" value={"correct"} />
+              <input type="radio" value={"incorrect"} />
+              <button onCLick={nextAnswer}>Next</button>
+            </form>
+          </div>
+        ) : null}
+      </div>
+    </Fragment>
+  );
 }
+
 export default QuizMode;
+
+//  What lives here?
+//      Nothing lives here, component should be imported and have a home else where.
+
+//  What is the use of this component?
+//      This component is only for displaying and interacting with the user during
+//    the time quizes are being taken.
+
+//      The parent componet will have the required data structure as the state and the
+//    methods to change the state too for this component to work properly. See QuizMode.js
+//    this first component to be compatible with this component.
+
+// Where can this component live?
+//      QuizMode.js
