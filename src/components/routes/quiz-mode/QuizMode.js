@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
  // import {WEBSTER_KEY} from "../../../set_keys"
 
 // Logical Component for the QuizUi
@@ -8,8 +8,8 @@ function QuizMode({
 
   // Methods
   runQuiz,
-  nextQuestion,
-  nextAnswer,
+  next,
+  // nextAnswer,
   setTimer,
   handleInput,
 
@@ -24,7 +24,7 @@ function QuizMode({
   input,
   onQuestion,
   onAnswer,
-  yourAnswer,
+  myAnswer,
   quizName,
 
   // Integers
@@ -32,11 +32,11 @@ function QuizMode({
 }) {
   return (
     <Fragment>
+    {/* Where user sets time and starts the quiz */}
       <div className="QuizUi">
         <h3>
           {quizName} <br /> Questions: {questions.length}
         </h3>
-        <div>
           <fieldset>
             <legend>Time Quiz</legend>
             <input
@@ -58,19 +58,20 @@ function QuizMode({
               </span>
             </div>
           </div>
-        </div>
 
+        {/* Where the quiz runs for the user */}
         {shouldRunQuiz ? (
-          <div className="FlashQuizArea ">
+          <div className="FlashQuizArea">
             <h1>{onQuestion || ""}</h1>
-            <form className="FlashQuizForm" onSubmit={nextQuestion}>
+            <form className="QuizForm" onSubmit={next}>
               <textarea name="answer" value={input} onChange={handleInput} />
               <br />
-              <button className="btn-normal Center"> Next </button>
+              <button className=" Center"> Next </button>
             </form>
           </div>
         ) : null}
 
+        {/* When the user is done with the quiz, this should run  */}
         {shouldRunCheck ? (
           <div className="FlashQuizArea">
             <fieldset>
@@ -84,15 +85,18 @@ function QuizMode({
             </fieldset>
 
             <fieldset>
-            <legend>Your Answer:</legend>
-            <h2>{yourAnswer}</h2>
+            <legend>My Answer:</legend>
+            <h2>{myAnswer}</h2>
             </fieldset>
-            <form>
               {" "}
-              <input type="radio" value={"correct"} />
-              <input type="radio" value={"incorrect"} />
-              <button onCLick={nextAnswer}>Next</button>
-            </form>
+              <h3>Correct</h3>
+              <form onSubmit={next}>
+              <input type="radio" onChange={handleInput} name={"check"} value={"correct"} />
+              <br /> 
+              <h3>Incorrect</h3>
+              <input type="radio" onChange={handleInput} name={"check"} value={"incorrect"} />
+              <button>Next</button>
+              </form>
           </div>
         ) : null}
       </div>

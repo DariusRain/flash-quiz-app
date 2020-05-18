@@ -3,6 +3,7 @@ import mockData from "../mock/mock-test-global-redux-state";
 
 // 💡 Root reducer for handling dispatched actions.
 //  root reducers take two parameters the state and action
+
 const rootReducer = (state = mockData, action) => {
   // This payload is a object that looks like {type:"NAME-OF-TYPE", {payload: {...}}}
   
@@ -21,23 +22,23 @@ const rootReducer = (state = mockData, action) => {
     case "DELETE_QUIZ":
       break;
 
-    case "SEND_SCORE":
-      const newState = state.myQuizArray.map(quiz => {
-        if (quiz.id === payload.id) {
-            quiz.yourScores = [...quiz.yourScores, payload.score];
-          }
-          
-      }); 
-      console.log(22, newState)
-      return {
-          ...state,
-          newState
-        }
+    // case "SEND_SCORE":
+    //   const newState = state.myQuizArray.map(quiz => {
+    //     if (quiz.id === payload.id) {
+    //         quiz.yourScores = [...quiz.yourScores, payload.score];
+    //       }   
+    //   }); 
+    //   console.log(22, newState)
+    //   return {
+    //       ...state,
+    //       newState
+    //     }
       
 
     default:
       return state;
   }
+
 };
 
 

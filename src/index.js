@@ -1,4 +1,4 @@
-//  Impo
+//  Import React & the entire application
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";

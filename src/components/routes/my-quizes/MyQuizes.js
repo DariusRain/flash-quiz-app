@@ -1,6 +1,6 @@
-import SectionTop from "../../containers/SectionTop";
-import SectionMiddle from "../../containers/SectionMiddle";
-import SectionBottom from "../../containers/SectionBottom";
+import SectionTop from "../../global/SectionTop";
+import SectionMiddle from "../../global/SectionMiddle";
+import SectionBottom from "../../global/SectionBottom";
 import { Link } from "react-router-dom";
 import React from "react";
 

@@ -2,7 +2,7 @@ import React from "react";
 
 function TextBox({ text, type }) {
   return (
-    <div style={style.main} className="QABox">
+    <div style={style.main}>
       <p>
         <span style={type.toLowerCase() === "q" ? style.question : style.answer}>
           {type}:
@@ -43,3 +43,6 @@ const style = {
 };
 
 export default TextBox;
+
+// This component renders a question box or answer box after the user
+// has submited a single question during the Quiz Form.

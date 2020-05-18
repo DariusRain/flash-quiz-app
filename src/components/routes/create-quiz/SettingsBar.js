@@ -1,4 +1,5 @@
 import React from "react";
+
 function SettingsBar({ indexOfQuestion, removeQuestion, id }) {
   return (
     <span style={style.main} className="SettingBar">
@@ -44,3 +45,6 @@ const style = {
 };
 
 export default SettingsBar;
+
+// This component will be the component that displays
+// the X and edit icons for during the time a user creates a quiz.

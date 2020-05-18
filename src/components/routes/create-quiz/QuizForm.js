@@ -1,5 +1,5 @@
 import React from "react";
-import PreviewQuestion from "../../misc/PreviewQuestion";
+import PreviewQuestion from "./PreviewQuestion";
 import { connect } from "react-redux";
 
 function QuizForm({

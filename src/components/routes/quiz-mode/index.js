@@ -11,17 +11,16 @@ class Index extends Component {
       quizMode: {
         quizName: this.props.quiz.quizName,
         questions: [...this.props.quiz.questions],
-        onQuestionNumber: 0,
+        indexCount: 0,
         onQuestion: this.props.quiz.questions[0]["question"],
-        onAnswerNumber: 0,
         onAnswer: "",
-        yourAnswer: "",
+        myAnswer: "",
         input: "",
         time: 0,
         shouldRunQuiz: false,
         shouldRunCheck: false,
         answered: [],
-        score: 0,
+        percentage: "0%",
       },
     };
   }
@@ -31,8 +30,7 @@ class Index extends Component {
       handleInput: this.handleInput,
       runQuiz: this.runQuiz,
       runCheck: this.runCheck,
-      nextQuestion: this.nextQuestion,
-      nextAnswer: this.nextAnswer,
+      next: this.next,
       setTimer: this.setTimer,
       submitScore: this.submitScore,
     };
@@ -40,11 +38,8 @@ class Index extends Component {
     return <QuizMode {...quizModeMethods} {...this.state.quizMode} />;
   }
 
-  // When component mounts hard copy the questions passed as props
-  // from the redux store in this directories index.js file.
   // Sets time for quiz (Not functional yet)
 
-  // --------------------------------------------------------------------------------------
   // Methods for <QuizMode />
   setTimer = (e) => {
     return this.setState({
@@ -56,122 +51,159 @@ class Index extends Component {
     });
   };
 
-  nextQuestion = (e) => {
+  next = (e) => {
     e.preventDefault();
-    const { onQuestionNumber, questions, input } = this.state.quizMode;
-    const nextQuestionNumber = onQuestionNumber + 1;
-    let dummyState = { ...this.state };
+    let clonedState = { ...this.state };
+    const {
+      indexCount,
+      questions,
+      input,
+      answered,
+      shouldRunQuiz,
+      shouldRunCheck,
+    } = this.state.quizMode;
+    const nextIndexCount = indexCount + 1;
 
-    if (nextQuestionNumber < questions.length) {
-      // console.log(questions[onQuestionNumber].question, "->", questions[nextQuestionNumber].question)
-      dummyState.quizMode.answered = [
-        ...this.state.quizMode.answered,
-        { ...questions[onQuestionNumber], myAnswer: input, correct: false },
-      ];
-      dummyState.quizMode.onQuestionNumber = nextQuestionNumber;
-      dummyState.quizMode.onQuestion = questions[nextQuestionNumber].question;
-
-      this.setState({ dummyState });
-    } else {
-      dummyState.quizMode.answered = [
-        ...this.state.quizMode.answered,
-        {
-          ...questions[questions.length - 1],
-          myAnswer: input,
-          correct: false,
-        },
-      ];
-      this.setState({ dummyState });
-      // This will just set the shouldRunQuiz state property to the opposing value so false.
-      this.runQuiz();
-
-      setTimeout(() => {
-        // Finished
-        alert("Finished!");
-
-        // this.checkQuizAuto();
-      }, 300);
-
-      // Since shouldRunQuiz is false now shouldRunCheck will bw set to true
-      this.runCheck();
-      this.resetState("QuizMode");
+    if (shouldRunQuiz) {
+      if (nextIndexCount < questions.length) {
+        // console.log(questions[indexCount].question, "->", questions[nextIndexCount].question)
+        clonedState.quizMode.answered = [
+          ...this.state.quizMode.answered,
+          { ...questions[indexCount], myAnswer: input, correct: false },
+        ];
+        clonedState.quizMode.indexCount = nextIndexCount;
+        clonedState.quizMode.onQuestion = questions[nextIndexCount].question;
+        this.setState({ ...clonedState });
+      } else {
+        clonedState.quizMode.answered = [
+          ...this.state.quizMode.answered,
+          {
+            ...questions[questions.length - 1],
+            myAnswer: input,
+            correct: false,
+          },
+        ];
+        clonedState.quizMode.onAnswer = clonedState.quizMode.answered[0].answer;
+        clonedState.quizMode.myAnswer =
+          clonedState.quizMode.answered[0].myAnswer;
+        this.setState({ ...clonedState });
+        this.changeState("Runquiz-off");
+        this.changeState("Runcheck-on");
+        this.changeState("Indexcount-reset");
+      }
+    } else if (shouldRunCheck) {
+      if (nextIndexCount < answered.length) {
+        clonedState.quizMode.answered[indexCount].correct =
+          input === "correct" ? true : false;
+        clonedState.quizMode.onAnswer =
+          clonedState.quizMode.answered[nextIndexCount].answer;
+        clonedState.quizMode.onQuestion =
+          clonedState.quizMode.answered[nextIndexCount].question;
+        clonedState.quizMode.indexCount = nextIndexCount;
+        this.setState({ ...clonedState });
+      } else {
+        clonedState.quizMode.answered[indexCount].correct =
+          input === "correct" ? true : false;
+        this.changeState("Runcheck-off");
+        let numOfCorrections = clonedState.quizMode.answered.filter(answer => answer.correct === true)
+        const percentageCalc = Math.round((numOfCorrections.length / answered.length) * 100);
+        clonedState.quizMode.percentage = `${percentageCalc}%`;
+        console.log(percentageCalc);
+        this.setState({ ...clonedState });
+      }
     }
-
-    return;
   };
 
-  nextAnswer = (e) => {
-    return;
-  };
+  changeState = (option) => {
+    let clonedState = { ...this.state };
 
-  resetState = (option) => {
     if (typeof option === "string") {
       option = option.toUpperCase();
-    }
-    switch (option) {
-      case "QUIZMODE":
-        this.setState({
-          ...this.state,
-          quizMode: {
-            questions: [...this.props.quiz.questions],
-            onQuestionNumber: 0,
-            onQuestion: this.props.quiz.questions[0]["question"],
-            onAnswerNumber: 0,
-            onAnswer: "",
-            input: "",
-            time: 0,
-            shouldRunQuiz: false,
-            shouldRunCheck: false,
-            answered: [],
-            score: 0,
-          },
-        });
-        break;
 
-      default:
-        this.setState({
-          quizMode: {
-            questions: [...this.props.quiz.questions],
-            onQuestionNumber: 0,
-            onQuestion: this.props.quiz.questions[0]["question"],
-            onAnswerNumber: 0,
-            onAnswer: "",
-            yourAnswer: "",
-            input: "",
-            time: 0,
-            shouldRunQuiz: false,
-            shouldRunCheck: false,
-            answered: [],
-            score: 0,
-          },
-        });
-        break;
+      switch (option) {
+        case "QUIZMODE-RESET":
+          this.setState({
+            ...this.state,
+            quizMode: {
+              questions: [...this.props.quiz.questions],
+              indexCount: 0,
+              onQuestion: this.props.quiz.questions[0]["question"],
+              onAnswerNumber: 0,
+              onAnswer: "",
+              input: "",
+              time: 0,
+              shouldRunQuiz: false,
+              shouldRunCheck: false,
+              answered: [],
+              score: 0,
+            },
+          });
+          break;
+
+        case "INDEXCOUNT-RESET":
+          clonedState.quizMode.indexCount = 0;
+          this.setState({ ...clonedState });
+          break;
+
+        case "RUNQUIZ-OFF":
+          clonedState.quizMode.shouldRunQuiz = false;
+          this.setState({ ...clonedState });
+          break;
+
+        case "RUNCHECK-ON":
+          clonedState.quizMode.shouldRunCheck = true;
+          this.setState({ ...clonedState });
+          break;
+        case "RUNCHECK-OFF":
+          clonedState.quizMode.shouldRunCheck = false;
+          this.setState({ ...clonedState });
+          break;
+        default:
+          this.setState({
+            quizMode: {
+              questions: [...this.props.quiz.questions],
+              indexCount: 0,
+              onQuestion: this.props.quiz.questions[0]["question"],
+              onAnswerNumber: 0,
+              onAnswer: "",
+              yourAnswer: "",
+              input: "",
+              time: 0,
+              shouldRunQuiz: false,
+              shouldRunCheck: false,
+              answered: [],
+              score: 0,
+            },
+          });
+          break;
+      }
+    } else {
+      console.log("Argument for changeState() must be a string!");
     }
+
     return;
   };
 
   runQuiz = () => {
-    let dummyState = { ...this.state };
-    dummyState.quizMode.shouldRunQuiz = !this.state.shouldRunQuiz;
-    this.setState({ dummyState });
+    let clonedState = { ...this.state };
+    clonedState.quizMode.shouldRunQuiz = !this.state.shouldRunQuiz;
+    this.setState({ ...clonedState });
+    return;
   };
 
   runCheck = () => {
-    let dummyState = { ...this.state };
-    dummyState.quizMode.shouldRunCheck = !this.state.shouldRunCheck;
-    this.setState({ dummyState });
+    let clonedState = { ...this.state };
+    clonedState.quizMode.shouldRunCheck = !this.state.shouldRunCheck;
+    this.setState({ ...clonedState });
   };
 
   handleInput = (e) => {
-    let dummyState = { ...this.state };
-    dummyState.quizMode.input = e.target.value;
-    this.setState({ dummyState });
+    let clonedState = { ...this.state };
+    clonedState.quizMode.input = e.target.value;
+    this.setState({ ...clonedState });
   };
 }
 
-// --------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------
 // Redux
 
 // Gets quiz by id by using the action type 'GET_QUIZ_BY_ID'
@@ -198,8 +230,6 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);
 
-// --------------------------------------------------------------------------------------
-
 // Inherited props from redux
 // @props.quiz: An individual quiz object from the redux global state.
 
@@ -208,7 +238,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Index);
 // @run: sets the state of 'shouldQuizRun' (Boolean) to true
 
 // @nextQuestion: sets 'state.answered' to have new answer,
-//  'state.onQuestion' to the current question & 'state.onQuestionNumber'
+//  'state.onQuestion' to the current question & 'state.indexCount'
 //   to the index of the current iteration of 'state.questions'
 
 // @checkNextQuestion: Similar to 'nextQuestion()' but sets
@@ -233,6 +263,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Index);
 //   return Math.round((rights / numOfQuestions) * 100);
 // }
 
+// Possibly adding or removing the below
 // thesarus = (words) => words.map(async word => {
 //   const synonyms = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=${WEBSTER_KEY}`)
 //   try {

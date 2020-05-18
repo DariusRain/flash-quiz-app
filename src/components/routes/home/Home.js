@@ -1,12 +1,12 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import SectionTop from "../../containers/SectionTop";
-import SectionMiddle from "../../containers/SectionMiddle";
-import SectionBottom from "../../containers/SectionBottom";
+import SectionTop from "../../global/SectionTop";
+import SectionMiddle from "../../global/SectionMiddle";
+import SectionBottom from "../../global/SectionBottom";
 
 // import QAForm from "../create-quiz/QuizForm";
 
-import Jumbo from "../../misc/Jumbo";
+import Jumbo from "./Jumbo";
 function Home({ store }) {
   return (
     <div>

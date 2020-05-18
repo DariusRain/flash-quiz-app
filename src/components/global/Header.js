@@ -10,7 +10,7 @@ function Header(props) {
 
 
 const style = {
- backgroundColor: "#dddddd",
+ backgroundColor: "#005080",
   width:"100%",
 }
 export default Header;

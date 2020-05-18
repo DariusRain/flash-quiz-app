@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #005080;
+  background-color: #444444;
 }
 fieldset {
     width: 50%;
@@ -115,9 +115,10 @@ h2 {
 
 .FlashQuizArea {
   position: absolute;
-  height: 100%;
   width: 100%;
-  overflow: hidden;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: #005080;
 }
 
@@ -184,23 +185,21 @@ h2 {
 h2 {
   color: #dddddd;
 }
-
-.QuizForm button {
+button {
   background-color: #005080;
   border-style: none;
   margin: 0.4rem;
   color: #dddddd;
   font-size: 1rem;
 }
-
-.QuizForm button:hover {
+button:hover {
   color: orange;
   cursor: pointer;
 }
 
+ 
 .QuizForm {
   width: 100%;
-
   display: flex;
 }
 .SettingBarClickItem {
@@ -233,9 +232,7 @@ h2 {
 
 .QuizUi {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -249,7 +246,6 @@ h2 {
 .QuizUi h3 {
   margin-left: 0.4rem;
   color: #dddddd;
-  position: absolute;
 }
 
 
