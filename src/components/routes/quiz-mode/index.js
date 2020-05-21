@@ -136,7 +136,6 @@ class Index extends Component {
 
         // Set state to the contents of the cloned state
         this.setState({ ...this.state, ...clonedState });
-        this.changeState("input-reset");
       } else {
         // This is my solution for the last question, there is probably a better solution but
         // ill haft to stick with this.
