@@ -21,7 +21,7 @@ const rootReducer = (state = mockData, action) => {
 
     case "DELETE_QUIZ":
       break;
-
+    
     // case "SEND_SCORE":
     //   const newState = state.myQuizArray.map(quiz => {
     //     if (quiz.id === payload.id) {
@@ -33,11 +33,10 @@ const rootReducer = (state = mockData, action) => {
     //       ...state,
     //       newState
     //     }
-      
-
+  
     default:
       return state;
-  }
+    }
 
 };
 

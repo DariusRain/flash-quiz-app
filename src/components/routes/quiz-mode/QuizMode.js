@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
- // import {WEBSTER_KEY} from "../../../set_keys"
+// import {WEBSTER_KEY} from "../../../set_keys"
 
 // Logical Component for the QuizUi
 function QuizMode({
@@ -9,16 +9,22 @@ function QuizMode({
   // Methods
   runQuiz,
   next,
+  cancel,
+
   // nextAnswer,
   setTimer,
   handleInput,
 
   // Objects
   questions,
+  answeredRight,
+  answeredWrong,
 
   // Booleans
   shouldRunQuiz,
   shouldRunCheck,
+  shouldShowStartMenu,
+  shouldShowResults,
 
   // Strings
   input,
@@ -26,81 +32,128 @@ function QuizMode({
   onAnswer,
   myAnswer,
   quizName,
+  percentage,
 
   // Integers
   time,
 }) {
   return (
-    <Fragment>
-    {/* Where user sets time and starts the quiz */}
-      <div className="QuizUi">
-        <h3>
-          {quizName} <br /> Questions: {questions.length}
-        </h3>
-          <fieldset>
-            <legend>Time Quiz</legend>
-            <input
-              type="number"
-              placeholder="How many minutes?"
-              // value={time.minutes}
-              onChange={setTimer}
-            />
-            <br />
-            <button onClick={runQuiz}>Start</button>{" "}
-          </fieldset>
-          <div className="StartQuizSection">
-            <div className="Timer">
-              <h3 className="Time">Time: </h3>
-              <span className="TimeTicking">
-                {time.minutes
-                  ? `${time.minutes} min, ${time.seconds} sec`
-                  : `0 min, 0 sec`}
+    <div className="QuizUi">
+      {shouldShowStartMenu ? (
+        <div style={{ margin: "0 auto" }}>
+          <h3>
+            {quizName} <br /> Questions: {questions.length}
+          </h3>
+          {/* 
+        <fieldset>
+          <legend>Time Quiz</legend>
+          <input
+            type="number"
+            placeholder="How many minutes?"
+            // value={time.minutes}
+            onChange={setTimer}
+          /> 
+          */}
+          <br />
+          <button onClick={runQuiz}>Start</button> {/* </fieldset> */}
+        </div>
+      ) : null}
+
+      {shouldShowResults ? (
+        <div>
+          <h3>Your percentage: {percentage} </h3>
+          <h3>Answered wrong:</h3>
+          {answeredWrong.length > -1 ? (
+            answeredWrong.map((obj) => (
+              <span style={{ color: "#dddddd" }}>
+                {obj.question}, <br />{" "}
               </span>
-            </div>
-          </div>
+            ))
+          ) : (
+            <span>None</span>
+          )}
+        </div>
+      ) : null}
+      {/* 
+        <div className="StartQuizSection">
+          <div className="Timer">
+            <h3 className="Time">Time: </h3>
+            <span className="TimeTicking">
+              {time.minutes
+                ? `${time.minutes} min, ${time.seconds} sec`
+                : `0 min, 0 sec`}
+            </span>
+          </div> 
+          */}
 
-        {/* Where the quiz runs for the user */}
-        {shouldRunQuiz ? (
-          <div className="FlashQuizArea">
-            <h1>{onQuestion || ""}</h1>
-            <form className="QuizForm" onSubmit={next}>
-              <textarea name="answer" value={input} onChange={handleInput} />
-              <br />
-              <button className=" Center"> Next </button>
-            </form>
-          </div>
-        ) : null}
-
-        {/* When the user is done with the quiz, this should run  */}
-        {shouldRunCheck ? (
-          <div className="FlashQuizArea">
-            <fieldset>
-            <legend>Question:</legend>
-            <h1>{onQuestion}</h1>
-            </fieldset>
-
-            <fieldset>
-            <legend>Answer:</legend>
-            <h2>{onAnswer}</h2>
-            </fieldset>
-
-            <fieldset>
-            <legend>My Answer:</legend>
-            <h2>{myAnswer}</h2>
-            </fieldset>
+      {/* Where the quiz runs for the user */}
+      {shouldRunQuiz ? (
+        <div className="FlashQuizArea">
+          <form
+            style={{ display: "flex", flexDirection: "column" }}
+            onSubmit={next}
+          >
+            <h1>{onQuestion || ""}</h1>{" "}
+            <textarea name="answer" value={input} onChange={handleInput} />
+            <br /> <button style={{ width: "100%" }}> Next </button>
+            <button style={{ width: "100%", color: "red" }} onClick={cancel}>
               {" "}
-              <h3>Correct</h3>
-              <form onSubmit={next}>
-              <input type="radio" onChange={handleInput} name={"check"} value={"correct"} />
-              <br /> 
-              <h3>Incorrect</h3>
-              <input type="radio" onChange={handleInput} name={"check"} value={"incorrect"} />
-              <button>Next</button>
-              </form>
+              Cancel
+            </button>
+          </form>
+        </div>
+      ) : null}
+
+      {/* When the user is done with the quiz, this should run  */}
+      {shouldRunCheck ? (
+        <div className="FlashQuizArea">
+        <div >
+          <fieldset>
+            <legend>Question:</legend>
+            <h3>{onQuestion}</h3>
+          </fieldset>
+          <fieldset>
+            <legend>Answer:</legend>
+            <h3>{onAnswer}</h3>
+          </fieldset>
+          <fieldset>
+            <legend>My Answer:</legend>
+            <h3>{myAnswer || "No answer given..."}</h3>
+          </fieldset>{" "}
           </div>
-        ) : null}
-      </div>
-    </Fragment>
+          <form onSubmit={next}>
+            <div style={{ display: "flex", margin:"0.5rem"}}>
+              <div>
+                <h3>Correct</h3>
+                <input
+                  type="radio"
+                  onChange={handleInput}
+                  name={"check"}
+                  value={"correct"}
+                />
+              </div>
+              <br />
+              <div>
+                <h3>Incorrect</h3>
+                <input
+                  type="radio"
+                  onChange={handleInput}
+                  name={"check"}
+                  value={"incorrect"}
+                />
+              </div>
+            </div>
+            <div style={{ display: "flex" }}>
+              <button>Next</button>
+              <button style={{ width: "100%",margin:"0.5rem" }} onClick={cancel}>
+                {" "}
+                Cancel{" "}
+              </button>
+            </div>
+          </form>
+        </div>
+      ) : null}
+    </div>
   );
 }
 

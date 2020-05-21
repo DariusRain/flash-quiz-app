@@ -27,8 +27,8 @@ import Header from "./components/global/Header";
 import NavBar from "./components/global/Navbar";
 
 // Misc Components
-import Logo from "./components/misc/Logo";
-import MyQuizCount from "./components/misc/MyQuizCount";
+import Logo from "./components/etc/Logo";
+import MyQuizCount from "./components/etc/MyQuizCount";
 // This is the MAIN COMPONENT of your application though you could have
 // multiple but normally 'App' is the only one.
 // Also the only one that gets imported into the index.js file.

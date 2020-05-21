@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {NavLink} from "react-router-dom";
 import SectionTop from "../../global/SectionTop";
 import SectionMiddle from "../../global/SectionMiddle";
@@ -9,14 +9,15 @@ import SectionBottom from "../../global/SectionBottom";
 import Jumbo from "./Jumbo";
 function Home({ store }) {
   return (
-    <div>
-      <SectionTop>
+    <Fragment>
+      <SectionTop className={"SectionTop"}>
         <Jumbo>
           <ul>
             <li>
-              Get started by creating your <NavLink to="/create-quiz">first quiz!</NavLink>
+              Get started by creating your <NavLink style={{fontSize: "2rem"}} to="/create-quiz">first quiz!</NavLink>
             </li>
           </ul>
+
         </Jumbo>
       </SectionTop>
 
@@ -26,12 +27,16 @@ function Home({ store }) {
         {/* About us and more link */}
         {/* < Footer />  */}
       </SectionBottom>
-    </div>
+    </Fragment>
   );
 }
 
-// const style = {
-//   main: {},
-// };
+
+
+const style = {
+  main: {
+    
+  },
+};
 
 export default Home;

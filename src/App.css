@@ -11,11 +11,10 @@ fieldset {
     width: 50%;
     border-style: none;
     border-radius: 0.2rem;
-    padding-bottom: 1rem;
   }
   
   legend {
-    color: orange;
+    color: orange !important;
     font-size: 1rem;
   }
   
@@ -24,7 +23,7 @@ fieldset {
   }
   
   li {
-    font-size: 1rem !important;
+    font-size: 1rem ;
   }
   
   a {
@@ -39,6 +38,20 @@ a img {
   span {
     font-size: 1rem;
   }
+
+  .loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 .quiz-link {
   font-size: 1rem;
   text-decoration: none;
@@ -111,8 +124,11 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 0 auto;
 }
-
+.SectionTop ul li, a{
+  font-size: 2rem;
+}
 .FlashQuizArea {
   position: absolute;
   width: 100%;
@@ -120,6 +136,8 @@ h2 {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #005080;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -234,6 +252,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 100%;
 }
 
 .QuizUi div, textarea, form {
