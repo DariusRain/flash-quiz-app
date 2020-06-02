@@ -14,10 +14,10 @@ function SettingsBar({ indexOfQuestion, removeQuestion, id }) {
           </span>
         </span>
         <span >
-          {" "}
+          {/* {" "}
           <span className={"SettingBarClickItem"} style={style.click} role="img" aria-label="Edit">
             📝
-          </span>
+          </span> */}
         </span>
       </span>
     </span>

@@ -40,8 +40,12 @@ const mockData = {
           question: "When dont you need a class component?",
           answer: "When a component does not require state and ",
         },
+        {
+          question: "What is the Virtual DOM & what does it do?",
+          answer: "When a component does not require state and ",
+        },
       ],
-
+      sources: ["https://www.geeksforgeeks.org/mern-stack/"],
       id: "0wzxoe-",
     },
   ],
