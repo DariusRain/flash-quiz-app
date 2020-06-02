@@ -63,7 +63,7 @@ function QuizMode({
         <div>
           <h3>Your percentage: {percentage} </h3>
           <h3>Answered wrong:</h3>
-          {answeredWrong.length - 1 > 0 ? (
+          {answeredWrong.length > 0 ? (
             answeredWrong.map((obj) => (
               <span style={{ color: "#dddddd" }}>
                 {obj.question}, <br />{" "}
