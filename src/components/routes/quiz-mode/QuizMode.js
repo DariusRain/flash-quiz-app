@@ -63,14 +63,14 @@ function QuizMode({
         <div>
           <h3>Your percentage: {percentage} </h3>
           <h3>Answered wrong:</h3>
-          {answeredWrong.length > -1 ? (
+          {answeredWrong.length - 1 > 0 ? (
             answeredWrong.map((obj) => (
               <span style={{ color: "#dddddd" }}>
                 {obj.question}, <br />{" "}
               </span>
             ))
           ) : (
-            <span>None</span>
+            <span style={{color:"#ddddd"}}>None</span>
           )}
         </div>
       ) : null}
@@ -93,7 +93,7 @@ function QuizMode({
             style={{ display: "flex", flexDirection: "column" }}
             onSubmit={next}
           >
-            <h1>{onQuestion || ""}</h1>{" "}
+            <h1 style={{color: "#dddddd"}}>{onQuestion || ""}</h1>{" "}
             <textarea name="answer" value={input} onChange={handleInput} />
             <br /> <button style={{ width: "100%" }}> Next </button>
             <button style={{ width: "100%", color: "red" }} onClick={cancel}>
@@ -107,22 +107,25 @@ function QuizMode({
       {/* When the user is done with the quiz, this should run  */}
       {shouldRunCheck ? (
         <div className="FlashQuizArea">
-        <div >
-          <fieldset>
-            <legend>Question:</legend>
-            <h3>{onQuestion}</h3>
-          </fieldset>
-          <fieldset>
-            <legend>Answer:</legend>
-            <h3>{onAnswer}</h3>
-          </fieldset>
-          <fieldset>
-            <legend>My Answer:</legend>
-            <h3>{myAnswer || "No answer given..."}</h3>
-          </fieldset>{" "}
+
+          <form onSubmit={next} style={{width: "100%"}}>
+
+          <div  style={{ margin: "0 auto" }} >
+            <fieldset>
+              <legend>Question:</legend>
+              <h3>{onQuestion}</h3>
+            </fieldset>
+            <fieldset>
+              <legend>Answer:</legend>
+              <h3>{onAnswer}</h3>
+            </fieldset>
+            <fieldset>
+              <legend>My Answer:</legend>
+              <h3>{myAnswer || "No answer given..."}</h3>
+            </fieldset>{" "}
           </div>
-          <form onSubmit={next}>
-            <div style={{ display: "flex", margin:"0.5rem"}}>
+
+            <div style={{ display: "flex", margin: "0.5rem" }}>
               <div>
                 <h3>Correct</h3>
                 <input
@@ -132,7 +135,7 @@ function QuizMode({
                   value={"correct"}
                 />
               </div>
-              <br />
+
               <div>
                 <h3>Incorrect</h3>
                 <input
@@ -143,14 +146,16 @@ function QuizMode({
                 />
               </div>
             </div>
-            <div style={{ display: "flex" }}>
+
+            <div style={{ display: "flex", margin: "0 auto" }}>
               <button>Next</button>
-              <button style={{ width: "100%",margin:"0.5rem" }} onClick={cancel}>
-                {" "}
+              <button style={{ margin: "1rem", color: "red" }} onClick={cancel}>
                 Cancel{" "}
               </button>
             </div>
+
           </form>
+
         </div>
       ) : null}
     </div>
