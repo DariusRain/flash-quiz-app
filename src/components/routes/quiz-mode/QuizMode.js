@@ -45,14 +45,14 @@ function QuizMode({
             {quizName} <br /> Questions: {questions.length}
           </h3>
           {/* 
-        <fieldset>
-          <legend>Time Quiz</legend>
-          <input
-            type="number"
-            placeholder="How many minutes?"
-            // value={time.minutes}
-            onChange={setTimer}
-          /> 
+            <fieldset>
+              <legend>Time Quiz</legend>
+              <input
+                type="number"
+                placeholder="How many minutes?"
+                // value={time.minutes}
+                onChange={setTimer}
+              /> 
           */}
           <br />
           <button onClick={runQuiz}>Start</button> {/* </fieldset> */}
@@ -84,7 +84,7 @@ function QuizMode({
                 : `0 min, 0 sec`}
             </span>
           </div> 
-          */}
+      */}
 
       {/* Where the quiz runs for the user */}
       {shouldRunQuiz ? (
